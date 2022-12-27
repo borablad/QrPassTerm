@@ -5,26 +5,28 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
-
+using CommunityToolkit.Mvvm.ComponentModel;
+using Xamarin.CommunityToolkit.Extensions;
+using QrPassTerm.Widgets;
+using Xamarin.Essentials;
+using QrPassTerm.Services.rest_and_interface;
 namespace QrPassTerm.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public partial class BaseViewModel : ObservableObject
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+       // public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
+        [ObservableProperty]
         bool isBusy = false;
-        public bool IsBusy
-        {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
-        }
-
+        [ObservableProperty]
         string title = string.Empty;
-        public string Title
-        {
-            get { return title; }
-            set { SetProperty(ref title, value); }
-        }
+
+        public string UserName { get => Preferences.Get(nameof(UserName), ""); set => Preferences.Set(nameof(UserName), value); }
+        public string Password { get => Preferences.Get(nameof(Password), ""); set => Preferences.Set(nameof(Password), value); }
+
+        public RestI DataStore => DependencyService.Get<RestI>();
+
+
 
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",
@@ -50,5 +52,20 @@ namespace QrPassTerm.ViewModels
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+        public async void ShowWarning(string title, string message)
+        {
+            try
+            {
+                var popup = new WarningView();
+                var popupvm = (WarningViewModel)popup.BindingContext;
+                popupvm.Title = title;
+                popupvm.Message = message;
+                var page = await App.Current.MainPage.ShowPopupAsync(popup);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

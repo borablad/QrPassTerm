@@ -4,13 +4,25 @@
              x:Class="QrPassTerm.Views.MainPage"
              Shell.NavBarIsVisible="False"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             Shell.TabBarIsVisible="False">
+             Shell.TabBarIsVisible="False"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
+             xmlns:vm ="clr-namespace:QrPassTerm.ViewModels"
+             x:DataType="vm:MainPageViewModel">
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid>
             <StackLayout>
                 <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="15" CornerRadius="20">
                     <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <Image Source="frame.png" Aspect="AspectFill"/>
+                        <zxing:ZXingBarcodeImageView WidthRequest="3000" HeightRequest="300" BarcodeValue="{Binding QrValue}" BarcodeFormat="QR_CODE" >
+
+                            <zxing:ZXingBarcodeImageView.BarcodeOptions>
+                            <zxcm:EncodingOptions Width="3000" Height="3000" />
+                            </zxing:ZXingBarcodeImageView.BarcodeOptions>
+                        </zxing:ZXingBarcodeImageView>
                     </Frame>
                 </Frame>
                 <StackLayout HorizontalOptions="Center" VerticalOptions="End" Margin="30,0,30,30">

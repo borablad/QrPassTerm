@@ -1,24 +1,73 @@
-﻿using QrPassTerm.Views;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using QrPassTerm.Models;
+using QrPassTerm.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace QrPassTerm.ViewModels
 {
-    public class LoginViewModel : BaseViewModel
+    public partial class LoginViewModel : BaseViewModel
     {
-        public Command LoginCommand { get; }
 
+        [ObservableProperty]
+        private string uName, pass;
         public LoginViewModel()
         {
-            LoginCommand = new Command(OnLoginClicked);
-        }
 
-        private async void OnLoginClicked(object obj)
+        }
+        [RelayCommand]
+        private async void Login()
         {
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+            IsBusy = true;
+            try
+            {
+                if (string.IsNullOrWhiteSpace(UName) || string.IsNullOrWhiteSpace(Pass))
+                {
+                    ShowWarning("Ошибка", "Заполните поля");
+                    IsBusy = false;
+                    return;
+                }
+                // await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+                var numb = UName.Replace("+", "").Replace(" ", "");
+                if (UName == UserName && Pass == Password && !string.IsNullOrWhiteSpace(Preferences.Get("token", "")) ||
+            !string.IsNullOrWhiteSpace(Preferences.Get("token_type", "")))
+                {
+                    await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+                    MessagingCenter.Send(this, "CheckUser");
+                }
+                var response = await DataStore.LoginAsync(new UserDto { UserName = numb, Password = Pass });
+                if (UName != UserName)
+                {
+                   
+                }
+                SaveUserDadta();
+                Preferences.Set("token", response);
+                Preferences.Set("token_type", $"bearer");
+               
+            }
+            catch (Exception ex)
+            {
+                // await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+
+                IsBusy = false;
+                 ShowWarning("Ошибка", ex.Message); return;
+
+
+              
+
+              
+            }
+            IsBusy = false;
             await Shell.Current.GoToAsync($"{nameof(MainPage)}");
+        }
+        private void SaveUserDadta()
+        {
+            UserName = UName;
+            Password = Pass;
         }
     }
 }

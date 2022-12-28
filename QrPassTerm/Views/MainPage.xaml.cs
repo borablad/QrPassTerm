@@ -24,5 +24,10 @@ namespace QrPassTerm.Views
             base.OnAppearing();
             vm.OnAppering();
         }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            vm.OnDessapiring();
+        }
     }
 }

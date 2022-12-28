@@ -51,5 +51,11 @@ namespace QrPassTerm.ViewModels
                 await Task.Delay(1000);
             }
         }
+
+
+        internal void OnDessapiring()
+        {
+            InPage=false;
+        }
     }
 }

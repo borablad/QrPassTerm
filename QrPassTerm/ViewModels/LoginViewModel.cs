@@ -22,6 +22,8 @@ namespace QrPassTerm.ViewModels
         [RelayCommand]
         private async void Login()
         {
+            await Shell.Current.GoToAsync($"{nameof(MainPage)}");
+            return;
             IsBusy = true;
             try
             {

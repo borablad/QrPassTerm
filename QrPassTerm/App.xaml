@@ -8,7 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <Color x:Key="Primary">#80b1ee</Color>
+            <Color x:Key="Primary">#0DA2F6</Color>
             <Color x:Key="Secondary">#DFD8F7</Color>
             <Color x:Key="Tertiary">#2c82ec</Color>
             <Color x:Key="White">White</Color>
@@ -73,7 +73,7 @@
             <Color x:Key="BoraCastomColorLight">#C5CCD6</Color>
             <Color x:Key="BoraElementColorLight">#F3F3F8</Color>
             <Color x:Key="BoraElementColorDark">#2A2B2F</Color>
-            <Color x:Key="HeaderBarBackgroundColorLight">#ADB7DB</Color>
+            <Color x:Key="HeaderBarBackgroundColorLight">#fff</Color>
             <Color x:Key="HeaderBarBackgroundColorDark">#3D364E</Color>
             <Color x:Key="HeaderBarBackgroundColorNetral">#929397</Color>
             <Color x:Key="HeaderBarTextColorLight">#000000</Color>
@@ -85,7 +85,7 @@
             <Color x:Key="ButtonTextColorLight">#FFFFFF</Color>
             <Color x:Key="ButtonTextColorDark">#FFFFFF</Color>
             <Color x:Key="AccentColorLight">#0DA2F6</Color>
-            <Color x:Key="AccentColorDark">#0DA2F6</Color>
+            <Color x:Key="AccentColorDark">#111111</Color>
             <Color x:Key="PrimaryBackgroundDark">#202125</Color>
             <Color x:Key="PrimaryBackgroundLight">#f5f5f5</Color>
             <Color x:Key="PrimaryTextDark">#ffffff</Color>
@@ -112,7 +112,7 @@
                 <Setter Property="FontFamily" Value="ExtraBold"/>
                 <Setter Property="FontSize" Value="14"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="CornerRadius" Value="8"/>
                 <Setter Property="Padding" Value="14,10"/>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
@@ -211,7 +211,7 @@
                 <Setter Property="Padding" Value="0" />
                 <!--<Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />-->
                 <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource HeaderBarBackgroundColorLight}, Dark={StaticResource HeaderBarBackgroundColorDark}}" />
-                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="CornerRadius" Value="8" />
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">

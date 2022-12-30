@@ -17,7 +17,7 @@
             <StackLayout>
                 <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="15" CornerRadius="20">
                     <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <zxing:ZXingBarcodeImageView WidthRequest="3000" HeightRequest="300" BarcodeValue="{Binding QrValue}" BarcodeFormat="QR_CODE" >
+                        <zxing:ZXingBarcodeImageView WidthRequest="300" HeightRequest="300" BarcodeValue="{Binding QrValue}" BarcodeFormat="QR_CODE" >
 
                             <zxing:ZXingBarcodeImageView.BarcodeOptions>
                             <zxcm:EncodingOptions Width="3000" Height="3000" />

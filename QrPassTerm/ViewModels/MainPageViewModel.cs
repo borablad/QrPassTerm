@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace QrPassTerm.ViewModels
 {
@@ -17,12 +19,33 @@ namespace QrPassTerm.ViewModels
         private bool check;
         [ObservableProperty]
         private bool inPage = true;
+
+        [ObservableProperty]
+        private bool systemTheme, lightTheme, darkTheme , isExpanded;
+        [ObservableProperty]
+        private string userThem;
+
+
+        public int userTheme
+        {
+            get => Preferences.Get("CastTheme", 0);
+            set
+            {
+                Preferences.Set("CastTheme", value);
+                OnPropertyChanged(nameof(userTheme));
+            }
+        }
+
         public MainPageViewModel()
         {
 
         }
         internal async void OnAppering()
         {
+            if (userTheme == 2) DarkTheme = true;
+            else if (userTheme == 1) LightTheme = true;
+            else SystemTheme = true;
+
             try {
                 generateQr = await DataStore.GetQr();
                 QrValue = generateQr.Code;
@@ -30,6 +53,50 @@ namespace QrPassTerm.ViewModels
             getQr();
 
         }
+
+        [RelayCommand] // Смена темы
+        public void ThemeSelectionChanged(string parm)
+        {
+            int preferens = int.Parse(parm);
+            userTheme = preferens;
+            switch (preferens)
+            {
+                case 2:
+                    {
+
+                        Xamarin.Forms.Application.Current.UserAppTheme = OSAppTheme.Dark;
+                        UserThem = "Тёмная";
+                        SystemTheme = false;
+                        LightTheme = false;
+
+                  
+
+
+                        break;
+                    }
+                case 1:
+                    {
+                        Xamarin.Forms.Application.Current.UserAppTheme = OSAppTheme.Light;
+                        UserThem = "Светлая";
+                        SystemTheme = false;
+                        DarkTheme = false;
+                       
+
+                        break;
+                    }
+
+                default:
+                    {
+                        Xamarin.Forms.Application.Current.UserAppTheme = OSAppTheme.Unspecified;
+                        UserThem = "Системная";
+                        LightTheme = false;
+                        DarkTheme = false;
+                       
+                        break;
+                    }
+            }
+        }
+
         private async Task getQr()
         {
             if (check) return;

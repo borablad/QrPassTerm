@@ -52,7 +52,7 @@
                                 <xct:Expander xct:CornerRadiusEffect.CornerRadius="10" Margin="5,0" Padding="5" BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}"  HorizontalOptions="FillAndExpand" ExpandAnimationLength="375" IsExpanded="{Binding IsExpanded}"
                                     >
                                     <xct:Expander.Header>
-                                        <StackLayout  Orientation="Horizontal" Padding="5,3"  BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" >
+                                        <StackLayout  Orientation="Horizontal" Padding="5"  BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}" >
                                             <Label  Text="Текущая тема "  FontAttributes="Bold" FontSize="Small" HorizontalOptions="Start" VerticalOptions="Center" />
                                             <Label  Text="{Binding UserThem}"  FontAttributes="Bold" FontSize="Small" HorizontalOptions="Start" VerticalOptions="Center" />
                                             <Label Text="{x:Static fa:FontAwesomeIcons.ChevronDown}" FontFamily="FAS" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand" IsVisible="{Binding IsExpanded,Converter={StaticResource InvertedBoolConverter}}"

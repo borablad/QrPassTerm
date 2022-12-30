@@ -8,6 +8,7 @@
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              xmlns:zxcm="clr-namespace:ZXing.Common;assembly=zxing.portable"
              xmlns:vm ="clr-namespace:QrPassTerm.ViewModels"
+             xmlns:fa="clr-namespace:FontAwesome"
              x:DataType="vm:MainPageViewModel">
     <ContentPage.BindingContext>
         <vm:MainPageViewModel/>
@@ -31,27 +32,30 @@
                 </StackLayout>
                 
             </StackLayout>
-            <xct:Expander HorizontalOptions="FillAndExpand"  >
+            <xct:Expander HorizontalOptions="EndAndExpand" xct:CornerRadiusEffect.CornerRadius="10"  >
                 <xct:Expander.Header>
-                    <StackLayout Padding="15,10" Orientation="Horizontal" BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundColorDark},Light={StaticResource BackgroundColorLight}}" >
-                        <Label Text="Сортировать " FontAttributes="Bold" FontSize="Small" />
-                       
+                    <StackLayout Padding="4" Orientation="Horizontal" BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundColorDark},Light={StaticResource BackgroundColorLight}}" >
+                        <Label Text="{x:Static fa:FontAwesomeIcons.Gear}" FontFamily="FAS" FontAttributes="Bold" FontSize="35" HorizontalOptions="EndAndExpand"  HorizontalTextAlignment="End" Margin="30"/>
+
                     </StackLayout>
                 </xct:Expander.Header>
-                <Frame CornerRadius="0" BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundColorDark},Light={StaticResource BackgroundColorLight}}" >
+                <Frame CornerRadius="10" >
                     <StackLayout Margin="0" Padding="10" >
-                        <Frame Margin="5,0">
-                            <Label Text="по умолчанию" Margin="10"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="Small" />
-                           
-                        </Frame>
-                        <Frame Margin="5,6">
-                            <Label Text="от дешёвых" Margin="10"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="Small" />
-                            
-                        </Frame>
-                        <Frame Margin="5,0">
-                            <Label Text="от дорогих" Margin="10"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="Small" />
-                            
-                        </Frame>
+                        <StackLayout xct:CornerRadiusEffect.CornerRadius="10" Margin="5,0" Padding="5"  BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundColorDark},Light={StaticResource BackgroundColorLight}}">
+                            <Label Text="по умолчанию" Margin="10,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="Small" />
+                            <Frame  VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="10,5"  CornerRadius="15" >
+
+                                <Entry Text="Binding UName}" Margin="10,5"  Placeholder="Введите логин"  />
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout xct:CornerRadiusEffect.CornerRadius="10" Margin="5,0" Padding="5"  BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundColorDark},Light={StaticResource BackgroundColorLight}}">
+                            <Label Text="по умолчанию" Margin="10,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="Small" />
+                            <Frame  VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="10,5"  CornerRadius="15" >
+
+                                <Entry Text="Binding UName}" Margin="10,5"  Placeholder="Введите логин"  />
+                            </Frame>
+                        </StackLayout>
+                        
                     </StackLayout>
                 </Frame>
             </xct:Expander>

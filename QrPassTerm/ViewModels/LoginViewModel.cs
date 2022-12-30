@@ -22,8 +22,8 @@ namespace QrPassTerm.ViewModels
         [RelayCommand]
         private async void Login()
         {
-            await Shell.Current.GoToAsync($"{nameof(MainPage)}");
-            return;
+           /* await Shell.Current.GoToAsync($"{nameof(MainPage)}");
+            return;*/
             IsBusy = true;
             try
             {
@@ -35,20 +35,12 @@ namespace QrPassTerm.ViewModels
                 }
                 // await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
                 var numb = UName.Replace("+", "").Replace(" ", "");
-                if (UName == UserName && Pass == Password && !string.IsNullOrWhiteSpace(Preferences.Get("token", "")) ||
-            !string.IsNullOrWhiteSpace(Preferences.Get("token_type", "")))
-                {
-                    await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-                    MessagingCenter.Send(this, "CheckUser");
-                }
+             
                 var response = await DataStore.LoginAsync(new UserDto { UserName = numb, Password = Pass });
-                if (UName != UserName)
-                {
-                   
-                }
+              
                 SaveUserDadta();
-                Preferences.Set("token", response);
-                Preferences.Set("token_type", $"bearer");
+                Preferences.Set("access_token", response);
+                Preferences.Set("auth_scheme", $"Bearer");
                
             }
             catch (Exception ex)

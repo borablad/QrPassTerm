@@ -26,7 +26,8 @@ namespace QrPassTerm.ViewModels
             try {
                 generateQr = await DataStore.GetQr();
                 QrValue = generateQr.Code;
-            } catch { ShowWarning("error", "need inet"); return; }
+                OnPropertyChanged(nameof(QrValue));
+            } catch { ShowWarning("error", "need inet");  }
             getQr();
 
         }
@@ -45,12 +46,12 @@ namespace QrPassTerm.ViewModels
                         generateQr = await DataStore.GetQr();
                         QrValue = generateQr.Code;
                     }
-                    catch { ShowWarning("error", "need inet"); return; }
+                    catch { ShowWarning("error", "need inet");  }
                 }
                 count++;
                 await Task.Delay(1000);
             }
-        }
+            }
 
 
         internal void OnDessapiring()

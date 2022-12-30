@@ -1,4 +1,4 @@
-﻿using QrPassTerm.Services;
+﻿using QrPassTerm.Services.rest_and_interface;
 using QrPassTerm.Views;
 using System;
 using Xamarin.Forms;
@@ -13,7 +13,7 @@ namespace QrPassTerm
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<RestMockDataStore>();
             MainPage = new AppShell();
         }
 

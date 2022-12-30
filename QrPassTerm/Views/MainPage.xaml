@@ -21,7 +21,7 @@
                         <zxing:ZXingBarcodeImageView WidthRequest="300" HeightRequest="300" BarcodeValue="{Binding QrValue}" BarcodeFormat="QR_CODE" >
 
                             <zxing:ZXingBarcodeImageView.BarcodeOptions>
-                            <zxcm:EncodingOptions Width="3000" Height="3000" />
+                            <zxcm:EncodingOptions Width="300" Height="300" />
                             </zxing:ZXingBarcodeImageView.BarcodeOptions>
                         </zxing:ZXingBarcodeImageView>
                     </Frame>

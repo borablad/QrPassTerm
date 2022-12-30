@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using QrPassTerm.Helpers;
 using QrPassTerm.Helpers.REST;
+using Newtonsoft.Json.Linq;
+
 namespace QrPassTerm.Services.rest_and_interface
 {
     public class RestMockDataStore : RestI
@@ -23,8 +25,10 @@ namespace QrPassTerm.Services.rest_and_interface
                 if (response.IsSuccessStatusCode)
                 {
                     var responseData = await response.Content.ReadAsStringAsync();
-                    //result = JsonConvert.DeserializeObject<string>(responseData);
-                    result = responseData.Replace("\"", "");
+                    
+                   result = JObject.Parse(responseData)["access_token"].ToString();
+
+                     result.Replace("\"", "");
                 }
                 else
                 {
@@ -41,7 +45,7 @@ namespace QrPassTerm.Services.rest_and_interface
         #endregion
         #region qr
         public async Task<GenerateQr> GetQr()
-        {
+            {
             var result = new GenerateQr();
 
             try
@@ -49,8 +53,8 @@ namespace QrPassTerm.Services.rest_and_interface
                 var response = await new RequestServiceREST().Get(Constans.GetQr);
                 if (response.IsSuccessStatusCode)
                 {
-
-                    var responseData = JsonConvert.DeserializeObject<GenerateQr>(await response.Content.ReadAsStringAsync());
+                    string rs = JObject.Parse(await response.Content.ReadAsStringAsync())["detail"].ToString();
+                    var responseData = JsonConvert.DeserializeObject<GenerateQr>(rs);
                     result = responseData;
 
                 }

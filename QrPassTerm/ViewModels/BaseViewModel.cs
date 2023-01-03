@@ -20,9 +20,20 @@ namespace QrPassTerm.ViewModels
         bool isBusy = false;
         [ObservableProperty]
         string title = string.Empty;
-
+        /* public static string HostUrl = "192.168.31.62";
+    public static string Scheme = "http";
+    public static string Port = "8000";
+*/
         public string UserName { get => Preferences.Get(nameof(UserName), ""); set => Preferences.Set(nameof(UserName), value); }
         public string Password { get => Preferences.Get(nameof(Password), ""); set => Preferences.Set(nameof(Password), value); }
+        public static string Sheme { get => Preferences.Get(nameof(Sheme), "http"); set => Preferences.Set(nameof(Sheme), value); }
+        public static string Port { get => Preferences.Get(nameof(Port), "8000"); set => Preferences.Set(nameof(Port), value); }
+        public static string HostUrl { get => Preferences.Get(nameof(HostUrl), "192.168.31.62"); set => Preferences.Set(nameof(HostUrl), value); }
+
+
+        
+
+
 
         public RestI DataStore => DependencyService.Get<RestI>();
 

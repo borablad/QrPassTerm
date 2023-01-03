@@ -16,7 +16,7 @@ namespace QrPassTerm.Views
         public LoginPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            vm = (LoginViewModel)BindingContext;
         }
         protected override void OnAppearing()
         {

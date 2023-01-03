@@ -82,24 +82,31 @@
                                 </xct:Expander>
                             </StackLayout>
 
-                            <!-- Настройки подключения -->
+                             <!--Настройки подключения--> 
                             <StackLayout>
                                 <Label Text="Настройки подключения" FontAttributes="Bold" FontSize="Micro"  Margin="15,0"/>
+                                <StackLayout xct:CornerRadiusEffect.CornerRadius="10" Margin="5,0" Padding="5"  BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundColorDark},Light={StaticResource BackgroundColorLight}}">
+                                    <Label Text="http/https" Margin="10,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="Small" />
+                                    <Frame  VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="10,5"  CornerRadius="15" >
 
+                                        <Entry Text="{Binding SchemeM}" Margin="10,5"  Placeholder="http"  />
+                                    </Frame>
+                                </StackLayout>
                                 <StackLayout xct:CornerRadiusEffect.CornerRadius="10" Margin="5,0" Padding="5"  BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundColorDark},Light={StaticResource BackgroundColorLight}}">
                                     <Label Text="Host сервера" Margin="10,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="Small" />
                                     <Frame  VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="10,5"  CornerRadius="15" >
 
-                                        <Entry Text="Binding UName}" Margin="10,5"  Placeholder="Введите логин"  />
+                                        <Entry Text="{Binding HostM}" Margin="10,5"  Placeholder="javajava.com"  />
                                     </Frame>
                                 </StackLayout>
                                 <StackLayout xct:CornerRadiusEffect.CornerRadius="10" Margin="5,0" Padding="5"  BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundColorDark},Light={StaticResource BackgroundColorLight}}">
                                     <Label Text="Port сервера" Margin="10,0"  HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontAttributes="Bold" FontSize="Small" />
                                     <Frame  VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="10,5"  CornerRadius="15" >
 
-                                        <Entry Text="Binding UName}" Margin="10,5"  Placeholder="Введите логин"  />
+                                        <Entry Text="{Binding PortM}" Margin="10,5"  Placeholder="8000"  />
                                     </Frame>
                                 </StackLayout>
+                             
                             </StackLayout>
 
 

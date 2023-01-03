@@ -26,6 +26,11 @@ namespace QrPassTerm.ViewModels
         private string userThem;
 
 
+        public string SchemeM { get { return Sheme; } set { Sheme = value; } }  
+        public string PortM { get { return Port; } set { Port = value; } }  
+        public string HostM { get { return HostUrl; } set { HostUrl = value; } }  
+
+
         public int userTheme
         {
             get => Preferences.Get("CastTheme", 0);

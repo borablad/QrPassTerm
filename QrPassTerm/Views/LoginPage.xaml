@@ -13,6 +13,13 @@
     <ContentPage.BindingContext>
         <vm:LoginViewModel/>
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <Grid RowDefinitions="*,auto" ColumnDefinitions="*,*" >
 
@@ -65,15 +72,15 @@
             <!--<Image  Source="{AppThemeBinding Dark=gosu_logo_w, Light=gosu_logo}" HeightRequest="20" HorizontalOptions="End" VerticalOptions="End" Margin="10"/>-->
 
             <!-- Настройки -->
-            <xct:Expander HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"  xct:CornerRadiusEffect.CornerRadius="10"  >
+            <xct:Expander  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"  xct:CornerRadiusEffect.CornerRadius="10"  >
                 <xct:Expander.Header>
                     <Label Text="{x:Static fa:FontAwesomeIcons.Gear}" FontFamily="FAS" FontAttributes="Bold" FontSize="35" HorizontalOptions="EndAndExpand"  HorizontalTextAlignment="End" Margin="30"/>
                 </xct:Expander.Header>
-                <Frame CornerRadius="10" >
+                <Frame CornerRadius="10" WidthRequest="350" >
                     <ScrollView>
                         <StackLayout Margin="0" Padding="10" >
-                            <!-- Выбор темы -->
-                            <StackLayout Grid.Row="1" Orientation="Vertical">
+                             <!--Выбор темы--> 
+                            <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Vertical">
                                 <Label Text="Выбор темы" FontAttributes="Bold" FontSize="Micro"  Margin="15,0"/>
                                 <xct:Expander xct:CornerRadiusEffect.CornerRadius="10" Margin="5,0" Padding="5" BackgroundColor="{AppThemeBinding Dark={StaticResource BackgroundColorDark}, Light={StaticResource BackgroundColorLight}}"  HorizontalOptions="FillAndExpand" ExpandAnimationLength="375" IsExpanded="{Binding IsExpanded}"
                                     >

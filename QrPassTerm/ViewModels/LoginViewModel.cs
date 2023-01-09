@@ -44,8 +44,8 @@ namespace QrPassTerm.ViewModels
             else SystemTheme = true;
 
             if (string.IsNullOrWhiteSpace(UserName) && string.IsNullOrWhiteSpace(Password)) return;
-            UName = UserName;
-            Pass = Password;
+            UserName =  UName ;
+             Password=Pass ;
             try
             {
                 IsBusy = true;

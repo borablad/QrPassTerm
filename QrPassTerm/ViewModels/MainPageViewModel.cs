@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using QrPassTerm.Models;
+using QrPassTerm.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,7 +29,8 @@ namespace QrPassTerm.ViewModels
 
         public string SchemeM { get { return Sheme; } set { Sheme = value; } }  
         public string PortM { get { return Port; } set { Port = value; } }  
-        public string HostM { get { return HostUrl; } set { HostUrl = value; } }  
+        public string HostM { get { return HostUrl; } set { HostUrl = value; } }
+        private const int CountToGetQr = 25;
 
 
         public int userTheme
@@ -59,6 +61,14 @@ namespace QrPassTerm.ViewModels
             getQr();
 
         }
+
+        // LogAut
+        [RelayCommand]
+        public void Logout()
+        {
+            Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+        }
+
 
         [RelayCommand] // Смена темы
         public void ThemeSelectionChanged(string parm)
@@ -110,7 +120,7 @@ namespace QrPassTerm.ViewModels
             int count = 0;
             while (InPage)
             {
-                if (count >= 25)
+                if (count >= CountToGetQr)
                 {
                     count = 0;
                     try

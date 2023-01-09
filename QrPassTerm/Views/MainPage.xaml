@@ -20,6 +20,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
+            
             <StackLayout>
                 <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="15" CornerRadius="20">
                     <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
@@ -115,6 +116,15 @@
                     
                 </Frame>
             </xct:Expander>
+            
+            <!-- Выход -->
+            <Frame VerticalOptions="Start" HorizontalOptions="Start" Padding="25" BackgroundColor="Transparent">
+                <Label Text="{x:Static fa:FontAwesomeIcons.RightFromBracket}" FontAttributes="Bold" FontFamily="FAS" FontSize="Title" />
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

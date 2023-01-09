@@ -59,16 +59,7 @@
 
 
             </StackLayout>
-            <StackLayout Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2"  VerticalOptions="EndAndExpand" Margin="15" HorizontalOptions="Center">
-                
-                <Label Text="Регистрация" FontAttributes="Bold" FontSize="Large" TextColor="{StaticResource Primary}" HorizontalOptions="Center">
-                    <!--<Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToRegisterCommand}"/>
-                    </Label.GestureRecognizers>-->
-                </Label>
-
-
-            </StackLayout>
+            
             <!--<Image  Source="{AppThemeBinding Dark=gosu_logo_w, Light=gosu_logo}" HeightRequest="20" HorizontalOptions="End" VerticalOptions="End" Margin="10"/>-->
 
             <!-- Настройки -->

@@ -42,8 +42,9 @@ namespace QrPassTerm.ViewModels
             if (userTheme == 2) DarkTheme = true;
             else if (userTheme == 1) LightTheme = true;
             else SystemTheme = true;
-
-            if (string.IsNullOrWhiteSpace(UserName) && string.IsNullOrWhiteSpace(Password)) return;
+            UName=UserName;
+            Pass = Password;
+         /*   if (string.IsNullOrWhiteSpace(UserName) && string.IsNullOrWhiteSpace(Password)) return;
             UserName =  UName ;
              Password=Pass ;
             try
@@ -58,7 +59,7 @@ namespace QrPassTerm.ViewModels
             catch
             {
 
-            }
+            }*/
 
         }
         [RelayCommand]

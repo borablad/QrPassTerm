@@ -116,6 +116,26 @@
                     
                 </Frame>
             </xct:Expander>
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Center" Padding="25" BackgroundColor="Transparent">
+                <Label Text="{x:Static fa:FontAwesomeIcons.Check}" Margin="10" TextColor="Green" FontAttributes="Bold" FontFamily="FAS" FontSize="Title" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowResultCommand}" CommandParameter="true" />
+
+                    </Label.GestureRecognizers>
+
+
+                </Label>
+                <Label Text="{x:Static fa:FontAwesomeIcons.Xmark}" Margin="10" TextColor="Red" FontAttributes="Bold" FontFamily="FAS" FontSize="Title" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowResultCommand}" CommandParameter="false" />
+
+                    </Label.GestureRecognizers>
+
+
+                </Label>             
+                
+            </StackLayout>
             
             <!-- Выход -->
             <Frame VerticalOptions="Start" HorizontalOptions="Start" Padding="25" BackgroundColor="Transparent">

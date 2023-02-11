@@ -78,5 +78,20 @@ namespace QrPassTerm.ViewModels
 
             }
         }
+        public async void ShowEnteredResult(bool message)
+        {
+            try
+            {
+                var popup = new ResultEntered();
+                var popupvm = (ResultEnterViewModel)popup.BindingContext;
+               
+                popupvm.Message = message;
+                var page = await App.Current.MainPage.ShowPopupAsync(popup);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

@@ -69,6 +69,16 @@ namespace QrPassTerm.ViewModels
             Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
 
+        [RelayCommand]
+        public void ShowResult(string param)
+        {
+            bool parm;
+            if (param == "true")
+                parm = true;
+            else parm = false;
+            ShowEnteredResult(parm);
+        }
+
 
         [RelayCommand] // Смена темы
         public void ThemeSelectionChanged(string parm)
